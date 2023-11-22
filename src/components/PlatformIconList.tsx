@@ -1,17 +1,6 @@
-import {
-  FaWindows,
-  FaPlaystation,
-  FaXbox,
-  FaApple,
-  FaLinux,
-  FaAndroid,
-} from "react-icons/fa";
-import { MdPhoneIphone } from "react-icons/md";
-import { SiNintendo } from "react-icons/si";
-import { BsGlobe } from "react-icons/bs";
 import { Platform } from "../hooks/useGames";
-import { HStack, Icon } from "@chakra-ui/react";
-import { IconType } from "react-icons";
+import { HStack, Text } from "@chakra-ui/react";
+import ShowIcon from "./ShowIcon";
 import { useState } from "react";
 
 interface Props {
@@ -19,34 +8,31 @@ interface Props {
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
-  const iconMap: { [key: string]: IconType } = {
-    pc: FaWindows,
-    playstation: FaPlaystation,
-    xbox: FaXbox,
-    nintendo: SiNintendo,
-    mac: FaApple,
-    linux: FaLinux,
-    android: FaAndroid,
-    ios: MdPhoneIphone,
-    web: BsGlobe,
-  };
-
-  const [color, setColor] = useState("gray.500");
+  const [iconText, setIconText] = useState("");
 
   return (
-    <HStack marginY={1}>
-      {platforms.map((platform) => (
-        <Icon
-          key={platform.id}
-          as={iconMap[platform.slug]}
-          color={color}
-          onMouseEnter={() => {
-            setColor("gray.0");
-          }}
-          onMouseLeave={() => setColor("gray.500")}
-        />
-      ))}
-    </HStack>
+    <>
+      <HStack marginY={1}>
+        {platforms.map((platform) => (
+          <ShowIcon
+            key={platform.id}
+            platform={platform}
+            setIconText={() => {
+              setIconText(platform.name);
+            }}
+            clearIconText={() => setIconText("")}
+          />
+        ))}
+      </HStack>
+      <Text
+        marginY={-2}
+        position={"absolute"}
+        marginTop={"-13px"}
+        fontSize={11}
+      >
+        {iconText}
+      </Text>
+    </>
   );
 };
 
