@@ -1,5 +1,5 @@
 import { Platform } from "../hooks/useGames";
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import ShowIcon from "./ShowIcon";
 import { useState } from "react";
 
@@ -23,15 +23,19 @@ const PlatformIconList = ({ platforms }: Props) => {
             clearIconText={() => setIconText("")}
           />
         ))}
+        <span
+          style={{
+            position: "absolute",
+            marginTop: "13px",
+            marginRight: "-2",
+            marginBottom: "-13px",
+            fontSize: "9px",
+            fontStyle: "oblique",
+          }}
+        >
+          {iconText}
+        </span>
       </HStack>
-      <Text
-        marginY={-2}
-        position={"absolute"}
-        marginTop={"-13px"}
-        fontSize={11}
-      >
-        {iconText}
-      </Text>
     </>
   );
 };
