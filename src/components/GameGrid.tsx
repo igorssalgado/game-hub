@@ -4,7 +4,6 @@ import {
   AlertIcon,
   AlertTitle,
   SimpleGrid,
-  Text,
 } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
