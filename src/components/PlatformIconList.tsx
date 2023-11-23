@@ -23,8 +23,10 @@ const PlatformIconList = ({ platforms }: Props) => {
             clearIconText={() => setIconText("")}
           />
         ))}
+
         <span
           style={{
+            color: "#62789d",
             position: "absolute",
             marginTop: "13px",
             marginRight: "-2",
