@@ -7,9 +7,16 @@ import {
 } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
+import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
-  const { games, error } = useGames();
+  const { games, error, isLoading } = useGames();
+  const skeleton = [0];
+  let item = 0;
+  for (let index = 0; index < games.length; index++) {
+    item++;
+    skeleton.push(item);
+  }
 
   return (
     <>
@@ -26,6 +33,8 @@ const GameGrid = () => {
         spacing={10}
         padding="10px"
       >
+        {isLoading &&
+          skeleton.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
