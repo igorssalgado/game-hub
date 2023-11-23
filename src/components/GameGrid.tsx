@@ -18,6 +18,14 @@ const GameGrid = () => {
     skeleton.push(item);
   }
 
+  const generateArrayAndRandomize = () => {
+    games.sort(() => Math.random() - 0.5);
+
+    return games;
+  };
+
+  generateArrayAndRandomize();
+
   return (
     <>
       {error && (
