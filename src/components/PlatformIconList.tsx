@@ -12,7 +12,7 @@ const PlatformIconList = ({ platforms }: Props) => {
 
   return (
     <>
-      <HStack marginY={1}>
+      <HStack inlineSize={"300px"} marginY={1} wrap={"wrap"}>
         {platforms.map((platform) => (
           <ShowIcon
             key={platform.id}
@@ -23,21 +23,20 @@ const PlatformIconList = ({ platforms }: Props) => {
             clearIconText={() => setIconText("")}
           />
         ))}
-
-        <span
-          style={{
-            color: "#62789d",
-            position: "absolute",
-            marginTop: "13px",
-            marginRight: "-2",
-            marginBottom: "-13px",
-            fontSize: "9px",
-            fontStyle: "oblique",
-          }}
-        >
-          {iconText}
-        </span>
       </HStack>
+      <span
+        style={{
+          color: "#62789d",
+          position: "absolute",
+          marginTop: "13px",
+          marginRight: "-2",
+          marginBottom: "-13px",
+          fontSize: "9px",
+          fontStyle: "oblique",
+        }}
+      >
+        {iconText}
+      </span>
     </>
   );
 };

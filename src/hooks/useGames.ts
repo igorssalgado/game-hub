@@ -50,7 +50,7 @@ const useGames = () => {
     setGames(FAKE_SEARCH_games);
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 0);
   }, []);
 
   return { games, error, isLoading };
