@@ -40,7 +40,7 @@ const useData = <T>(endpoint: string) => {
       setData(FAKE_SEARCH_genres);
       setTimeout(() => {
         setLoading(false);
-      }, 0);
+      }, 1000);
     }
     if (endpoint === "/games") {
       setLoading(true);
@@ -48,7 +48,7 @@ const useData = <T>(endpoint: string) => {
       setData(FAKE_SEARCH_games);
       setTimeout(() => {
         setLoading(false);
-      }, 0);
+      }, 1000);
     }
     ////////////////////////////////////////////////////////
     ////// FAKE ENDPOINTS //////////////////////////////////
