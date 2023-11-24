@@ -19,45 +19,45 @@ const useData = <T>(
 
   useEffect(
     () => {
-      const controller = new AbortController();
-      setLoading(true);
-      apiClient
-        .get<FetchReponse<T>>(endpoint, {
-          signal: controller.signal,
-          ...requestConfig,
-        })
-        .then((res) => {
-          console.log(res.data.results);
-          setData(res.data.results);
-          setLoading(false);
-        })
-        .catch((err) => {
-          if (err instanceof CanceledError) return;
-          setError(err.message);
-          setLoading(false);
-        });
+      // const controller = new AbortController();
+      // setLoading(true);
+      // apiClient
+      //   .get<FetchReponse<T>>(endpoint, {
+      //     signal: controller.signal,
+      //     ...requestConfig,
+      //   })
+      //   .then((res) => {
+      //     console.log(res.data.results);
+      //     setData(res.data.results);
+      //     setLoading(false);
+      //   })
+      //   .catch((err) => {
+      //     if (err instanceof CanceledError) return;
+      //     setError(err.message);
+      //     setLoading(false);
+      //   });
 
-      return () => controller.abort();
+      // return () => controller.abort();
 
       ////////////////////////////////////////////////////////
       ////// FAKE ENDPOINTS //////////////////////////////////
       ////////////////////////////////////////////////////////
-      // if (endpoint === "/genres") {
-      //   setLoading(true);
-      //   // console.log(FAKE_SEARCH_genres);
-      //   setData(FAKE_SEARCH_genres);
-      //   setTimeout(() => {
-      //     setLoading(false);
-      //   }, 1000);
-      // }
-      // if (endpoint === "/games") {
-      //   setLoading(true);
-      //   // console.log(FAKE_SEARCH_games);
-      //   setData(FAKE_SEARCH_games);
-      //   setTimeout(() => {
-      //     setLoading(false);
-      //   }, 1000);
-      // }
+      if (endpoint === "/genres") {
+        setLoading(true);
+        // console.log(FAKE_SEARCH_genres);
+        setData(FAKE_SEARCH_genres);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }
+      if (endpoint === "/games") {
+        setLoading(true);
+        // console.log(FAKE_SEARCH_games);
+        setData(FAKE_SEARCH_games);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }
       ////////////////////////////////////////////////////////
       ////// FAKE ENDPOINTS //////////////////////////////////
       ////////////////////////////////////////////////////////
