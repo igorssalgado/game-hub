@@ -9,9 +9,14 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "../hooks/useGenres";
 
-const GameGrid = () => {
-  const { data, error, isLoading } = useGames();
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const GameGrid = ({ selectedGenre }: Props) => {
+  const { data, error, isLoading } = useGames(selectedGenre);
   const skeleton = [0];
   let item = 0;
   for (let index = 0; index < data.length; index++) {
@@ -25,7 +30,7 @@ const GameGrid = () => {
     return data;
   };
 
-  generateArrayAndRandomize();
+  // generateArrayAndRandomize();
 
   return (
     <>
@@ -44,13 +49,13 @@ const GameGrid = () => {
       >
         {isLoading &&
           skeleton.map((skeleton) => (
-            <GameCardContainer>
-              <GameCardSkeleton key={skeleton} />
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
             </GameCardContainer>
           ))}
         {data.map((data) => (
-          <GameCardContainer>
-            <GameCard key={data.id} game={data} />
+          <GameCardContainer key={data.id}>
+            <GameCard game={data} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
