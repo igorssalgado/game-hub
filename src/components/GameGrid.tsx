@@ -11,18 +11,18 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   const skeleton = [0];
   let item = 0;
-  for (let index = 0; index < games.length; index++) {
+  for (let index = 0; index < data.length; index++) {
     item++;
     skeleton.push(item);
   }
 
   const generateArrayAndRandomize = () => {
-    games.sort(() => Math.random() - 0.5);
+    data.sort(() => Math.random() - 0.5);
 
-    return games;
+    return data;
   };
 
   generateArrayAndRandomize();
@@ -48,9 +48,9 @@ const GameGrid = () => {
               <GameCardSkeleton key={skeleton} />
             </GameCardContainer>
           ))}
-        {games.map((game) => (
+        {data.map((data) => (
           <GameCardContainer>
-            <GameCard key={game.id} game={game} />
+            <GameCard key={data.id} game={data} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
