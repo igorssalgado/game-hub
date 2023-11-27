@@ -6,6 +6,7 @@ import {
   Spinner,
   Button,
   Heading,
+  Box,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedUrl from "../services/image-url";
@@ -22,7 +23,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
   if (isLoading) return <Spinner />;
 
   return (
-    <>
+    <Box padding={3}>
       <Heading fontSize="2xl" marginBottom={3}>
         Genres
       </Heading>
@@ -57,7 +58,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
           );
         })}
       </List>
-    </>
+    </Box>
   );
 };
 

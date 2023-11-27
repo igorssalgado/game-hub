@@ -22,7 +22,6 @@ function App() {
 
   return (
     <Grid
-      gap={4}
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`, //1024px

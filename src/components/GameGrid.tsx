@@ -19,19 +19,14 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeleton = [0];
+
+  let dataLength = data.length !== 0 ? data.length : 10;
+
   let item = 0;
-  for (let index = 0; index < data.length; index++) {
+  for (let index = 0; index < dataLength; index++) {
     item++;
     skeleton.push(item);
   }
-
-  const generateArrayAndRandomize = () => {
-    data.sort(() => Math.random() - 0.5);
-
-    return data;
-  };
-
-  // generateArrayAndRandomize();
 
   return (
     <>
@@ -43,7 +38,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         </Alert>
       )}
 
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={3}>
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
         {isLoading &&
           skeleton.map((skeleton) => (
             <GameCardContainer key={skeleton}>
