@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
-import { FAKE_SEARCH_games, FAKE_SEARCH_genres } from "../services/fake-data";
 
 interface FetchReponse<T> {
   count: number;
@@ -38,29 +37,6 @@ const useData = <T>(
         });
 
       return () => controller.abort();
-
-      ////////////////////////////////////////////////////////
-      ////// FAKE ENDPOINTS //////////////////////////////////
-      ////////////////////////////////////////////////////////
-      // if (endpoint === "/genres") {
-      //   setLoading(true);
-      //   // console.log(FAKE_SEARCH_genres);
-      //   setData(FAKE_SEARCH_genres);
-      //   setTimeout(() => {
-      //     setLoading(false);
-      //   }, 1000);
-      // }
-      // if (endpoint === "/games") {
-      //   setLoading(true);
-      //   // console.log(FAKE_SEARCH_games);
-      //   setData(FAKE_SEARCH_games);
-      //   setTimeout(() => {
-      //     setLoading(false);
-      //   }, 1000);
-      // }
-      ////////////////////////////////////////////////////////
-      ////// FAKE ENDPOINTS //////////////////////////////////
-      ////////////////////////////////////////////////////////
     },
     deps ? [...deps] : []
   );
